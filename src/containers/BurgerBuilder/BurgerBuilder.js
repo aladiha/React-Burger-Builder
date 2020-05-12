@@ -18,12 +18,27 @@ state = {
     ingredients: {
         salad: 0,
         bacon: 0,
-        meat: 0,
-        cheese: 0
+        cheese: 0,
+        meat: 0
     },
     totalCost: 2,
-    purchased: false
+    purchasable: false
 };
+
+updatePurchaseState(updatedIngredients) {
+    
+    const newSum = Object.keys(updatedIngredients).map(
+        igKey => {
+            return updatedIngredients[igKey];
+        }
+    ).reduce((sum, el) => { 
+        return sum + el;
+    },0);
+    this.setState({
+        purchasable: newSum > 0
+    });
+
+}
 
 addIngredientHandler = (type) => {
     const updatedCount =  this.state.ingredients[type] + 1;
@@ -40,16 +55,18 @@ addIngredientHandler = (type) => {
       ingredients: updatedIngredients,
       totalCost: newCost
     })
+    this.updatePurchaseState(updatedIngredients);
 }
 
 
 removeIngredientHandler = (type) => {
+
+    const updatedIngredients = {
+        ...this.state.ingredients
+    };
+
     if (this.state.ingredients[type] > 0){
         const updatedCount =  this.state.ingredients[type] - 1;
-
-        const updatedIngredients = {
-            ...this.state.ingredients
-        };
 
         updatedIngredients[type] = updatedCount;
         
@@ -60,6 +77,7 @@ removeIngredientHandler = (type) => {
         totalCost: newCost
         })
     }
+    this.updatePurchaseState(updatedIngredients);
 }
 
 
@@ -72,6 +90,8 @@ render(){
         disabledInfo[key] = disabledInfo[key] === 0
     }
 
+
+
     return(
         <Aux>
             <Burger ingredients={this.state.ingredients}/>
@@ -79,6 +99,8 @@ render(){
             more={this.addIngredientHandler}
             less={this.removeIngredientHandler}
             disable={disabledInfo}
+            purchasable={this.state.purchasable}
+            price={this.state.totalCost}
             />
         </Aux>
     );

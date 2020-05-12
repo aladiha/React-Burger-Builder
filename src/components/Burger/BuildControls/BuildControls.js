@@ -7,8 +7,8 @@ import BuildControl from './BuildControl/buildControl'
 const controls = [
     {label: 'Salad', type: 'salad'},
     {label: 'Bacon', type: 'bacon'},
+    {label: 'Cheese', type: 'cheese'},
     {label: 'Meat', type: 'meat'},
-    {label: 'Cheese', type: 'cheese'}
 ];
 
 
@@ -16,6 +16,7 @@ const buildControls = (props) => {
 
     return (
           <div className={classes.BuildControls}>
+              <p>Current Price: <strong> {props.price.toFixed(2)} $</strong></p>
               {controls.map(
                   ctrl => (
                         <BuildControl 
@@ -27,6 +28,9 @@ const buildControls = (props) => {
                         />
                   )
               )}
+              <button className={classes.OrderButton}
+              disabled={!props.purchasable}
+              >ORDER NOW</button>
           </div>  
     );
 }
