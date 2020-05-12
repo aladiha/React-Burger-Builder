@@ -23,6 +23,7 @@ const buildControls = (props) => {
                         less={() => props.less(ctrl.type)}
                         key={ctrl.label}
                         label = {ctrl.label}
+                        disable = {props.disable[ctrl.type]}
                         />
                   )
               )}

@@ -64,6 +64,13 @@ removeIngredientHandler = (type) => {
 
 
 render(){
+    const disabledInfo = {
+        ...this.state.ingredients
+    };
+
+    for (let key in disabledInfo){
+        disabledInfo[key] = disabledInfo[key] === 0
+    }
 
     return(
         <Aux>
@@ -71,6 +78,7 @@ render(){
             <BuildControls 
             more={this.addIngredientHandler}
             less={this.removeIngredientHandler}
+            disable={disabledInfo}
             />
         </Aux>
     );
