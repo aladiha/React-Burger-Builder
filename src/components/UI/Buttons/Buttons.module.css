@@ -1,0 +1,35 @@
+
+.Button {
+    outline: none;
+    display: inline-block;
+    height: 40px;
+    width: 34%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 2px 3px black;
+    cursor: pointer;
+    color: white;
+    
+ 
+}
+
+.Cancel{
+    background-color: rgb(196, 130, 45);
+    margin-left: 10%;
+}
+
+.Cancel:hover {
+    background-color: #8F5E1E;
+}
+
+.Continue{
+    background-color: #C15711;
+    
+    
+}
+
+.Continue:hover {
+    background-color: #8F5E1E;
+}

@@ -90,10 +90,14 @@ orderNowHandler = () => {
     })
 }
 
-backDropHandler = () => {
+dismissModalHandler = () => {
     this.setState({
         showModal: false
     })
+}
+
+continuePurchaseHandler = () => {
+    alert("to be continued");
 }
 
 render(){
@@ -109,8 +113,11 @@ render(){
 
     return(
         <Aux>
-            <Modal show={this.state.showModal} clicked={this.backDropHandler}> 
-            <OrderSummary ingredients={this.state.ingredients}/>
+            <Modal show={this.state.showModal} clicked={this.dismissModalHandler}> 
+            <OrderSummary 
+            ingredients={this.state.ingredients} 
+            continue={this.continuePurchaseHandler}
+            cancel={this.dismissModalHandler}/>
             </Modal> 
             <Burger ingredients={this.state.ingredients}/>
             <BuildControls 

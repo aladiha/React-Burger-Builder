@@ -1,13 +1,17 @@
 import React from 'react'
 import Aux from '../../../hoc/Auxi'
-import Backdrop from '../../UI/Backdrop/Backdrop'
+import classes from './OrderSummary.module.css';
+import Buttons from '../../UI/Buttons/Buttons'
 
 const orderSummary = (props) => {
 
     const ingredientSummary = Object.keys(props.ingredients).map(
         igKey => {
-            return <li key={igKey}>
-                    <span style={{textTransform: 'capitalize'}}>{igKey}</span>: {props.ingredients[igKey]}
+            return <li style={{
+                color: '#C24B26',
+                fontWeight: "bold"
+            }} key={igKey}>
+                    <span style={{textTransform: 'capitalize'}}>{igKey}</span>: <span style={{color: 'black'}}>{props.ingredients[igKey]}</span>
             </li>
         }
     )
@@ -15,12 +19,20 @@ const orderSummary = (props) => {
 
     return(
      <Aux>
-         <h3>Your Order</h3>
-         <p>A delicous burger with the following ingredients:</p>
+         <h2>Your Order</h2>
+         <p className={classes.P}>A delicous burger with the following ingredients:</p>
          <ul>
             {ingredientSummary}
          </ul>
-         <p>Continue To Checkout?</p>
+         <p className={classes.P}>Continue To Checkout?</p>
+         <div style={{
+             textAlign: "center",
+             marginBottom: "10px",
+             marginTop: "20px"
+             }}>
+         <Buttons btnType="Continue" clicked={props.continue}>Continue</Buttons>
+         <Buttons btnType="Cancel" clicked={props.cancel}>Cancel</Buttons>
+         </div>
     </Aux>
     );
 };
