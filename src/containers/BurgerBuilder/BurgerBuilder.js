@@ -7,6 +7,7 @@ import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 
 
+
 const Ingredient_Prices = {
     salad: 0.5,
     cheese: 0.4,
@@ -89,10 +90,11 @@ orderNowHandler = () => {
     })
 }
 
-
-
-
-
+backDropHandler = () => {
+    this.setState({
+        showModal: false
+    })
+}
 
 render(){
     const disabledInfo = {
@@ -107,8 +109,8 @@ render(){
 
     return(
         <Aux>
-            <Modal show={this.state.showModal}>
-                <OrderSummary ingredients={this.state.ingredients}/>
+            <Modal show={this.state.showModal} clicked={this.backDropHandler}> 
+            <OrderSummary ingredients={this.state.ingredients}/>
             </Modal> 
             <Burger ingredients={this.state.ingredients}/>
             <BuildControls 

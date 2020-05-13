@@ -1,9 +1,13 @@
 import React from 'react'
 import classes from './Modal.module.css'
+import Aux from '../../../hoc/Auxi';
+import Backdrop from '../Backdrop/Backdrop';
 
 const modal = (props) => {
 
     return (
+        <Aux>
+            <Backdrop show={props.show} clicked={props.clicked}/>
         <div 
         className ={classes.Modal}
         style={{
@@ -12,6 +16,7 @@ const modal = (props) => {
         }}>
             {props.children}
         </div>
+        </Aux>
     );
 }
 
