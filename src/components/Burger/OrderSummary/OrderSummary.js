@@ -24,6 +24,10 @@ const orderSummary = (props) => {
          <ul>
             {ingredientSummary}
          </ul>
+        <p style={{
+          fontWeight: 'bold',
+          fontSize: '1em'
+        }}>Total Cost: {props.price.toFixed(2)}$</p>
          <p className={classes.P}>Continue To Checkout?</p>
          <div style={{
              textAlign: "center",

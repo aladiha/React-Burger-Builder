@@ -117,7 +117,8 @@ render(){
             <OrderSummary 
             ingredients={this.state.ingredients} 
             continue={this.continuePurchaseHandler}
-            cancel={this.dismissModalHandler}/>
+            cancel={this.dismissModalHandler}
+            price={this.state.totalCost}/>
             </Modal> 
             <Burger ingredients={this.state.ingredients}/>
             <BuildControls 
