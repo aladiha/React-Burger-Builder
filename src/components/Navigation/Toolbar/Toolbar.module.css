@@ -21,4 +21,13 @@
     .DesktopOnly {
         display: none;
     }
+    .Toggle{
+        cursor: pointer;
+        box-sizing: border-box;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
 }
+
+
+
+
